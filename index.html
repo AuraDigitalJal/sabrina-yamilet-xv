@@ -376,6 +376,85 @@ main.page .content:has(> .aura-brand-credit)>:nth-last-child(2){margin-bottom:0!
 main.page .content>.aura-brand-credit{margin:10px auto 0}
 .aura-close-panel>.aura-brand-credit{margin:12px auto 0;max-width:100%}
 @media(max-width:480px){main.page .content:has(> .aura-brand-credit){padding-bottom:16px!important}.aura-close-panel>.aura-brand-credit{margin-top:10px}}
+
+/* Sabrina Yamilet — refinamiento editorial de tarjetas 2026-11-12 */
+:root{
+  --accent:#813b4b;
+  --heading:#582b38;
+  --text:#503941;
+  --muted:#80666b;
+  --card:rgba(247,233,225,.92);
+  --loc:rgba(255,250,243,.9);
+  --radius:16px;
+}
+.content>.section{
+  background:linear-gradient(146deg,rgba(255,249,242,.95) 0%,rgba(244,227,218,.94) 100%)!important;
+  border:1px solid rgba(120,72,78,.20)!important;
+  border-radius:16px!important;
+  box-shadow:0 20px 55px rgba(64,26,32,.11),inset 0 1px 0 rgba(255,255,255,.7)!important;
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+}
+.content>.section h2{color:var(--heading)}
+.content>.section .section-label{color:#8b6066;letter-spacing:.26em}
+.content>.section .ornament{width:42px;height:1px;background:#b89a79;opacity:.95}
+.content>.section .location-card{
+  background:rgba(255,251,246,.88)!important;
+  border:1px solid rgba(139,95,91,.22)!important;
+  border-radius:12px!important;
+  padding:clamp(18px,4vw,25px)!important;
+  box-shadow:0 8px 24px rgba(70,34,42,.045);
+}
+.content>.section .location-card small{color:#896d6e}
+.content>.section .location-card strong{color:#582b38;line-height:1.35}
+.content>.section .location-card .map-toggle,
+.content>.section .location-card .map-external{color:#753c4b}
+.content>.section .location-card .map-toggle:hover,
+.content>.section .location-card .map-external:hover{color:#512535}
+.content>.section.rsvp{
+  background:linear-gradient(146deg,rgba(103,45,61,.97),rgba(66,25,39,.98))!important;
+  border-color:rgba(212,181,147,.48)!important;
+  box-shadow:0 22px 55px rgba(59,21,35,.20),inset 0 0 0 5px rgba(255,250,243,.035)!important;
+}
+.content>.section.rsvp .section-label{color:#d8bfa5}
+.content>.section.rsvp h2{color:#fff5ec!important}
+.content>.section.rsvp .section-copy{color:#eddbd0!important}
+.content>.section.rsvp .cta{
+  background:#edd9c2!important;
+  border:1px solid #edd9c2!important;
+  color:#572c3b!important;
+  border-radius:999px;
+  font-weight:600;
+  letter-spacing:.07em;
+  padding:14px 22px;
+  box-shadow:0 9px 22px rgba(32,11,18,.15);
+}
+.content>.section.rsvp .cta:hover{background:#fff2e3!important;transform:translateY(-2px)}
+.content>.section.date-section{
+  background:linear-gradient(160deg,rgba(247,232,225,.95),rgba(253,245,237,.95))!important;
+}
+.theme-dark_romance .date-section .date-card.date-auto{
+  background:rgba(255,251,246,.90)!important;
+  border:1px solid rgba(137,91,93,.25)!important;
+  border-radius:12px!important;
+  box-shadow:0 10px 30px rgba(85,39,50,.055)!important;
+  padding:28px 20px!important;
+  color:#582b38!important;
+}
+.date-section .date-card .date-day{color:#582b38!important}
+.date-section .date-card .date-weekday,
+.date-section .date-card .date-time{color:#82666b!important}
+.date-section .countdown .count-item b{color:#582b38!important}
+.date-section .countdown .count-item span{color:#80666b!important}
+.content>.section:last-of-type .final-message{color:#5b303c}
+.content>.section:last-of-type .closing-signature{color:#813b4b}
+.content>.section:last-of-type .closing-signature::before{background:#b89a79;opacity:1}
+@media(max-width:480px){
+  .content>.section{border-radius:14px!important}
+  .content>.section .location-card{border-radius:10px!important}
+  .content>.section.rsvp .cta{max-width:100%;font-size:10px;line-height:1.4}
+}
+
 </style></head><body class="theme-dark_romance event-xv design-none"><div class="invitation-background" aria-hidden="true"><img src="assets/fondo.png?v=mwe94bta" alt="" decoding="async"><div class="background-veil"></div></div><header class="hero cover-atelier cover-designed" data-order="classic" data-offset="0"><div class="hero-media"></div><div class="hero-overlay"></div><div class="hero-inner"></div><div class="scroll-note">Desliza para descubrir</div></header><main class="page"><figure class="banner-media reveal banner-auto banner-main" aria-label="Banner principal"><img src="assets/banner.png?v=mwe94bta" alt="Banner principal" loading="lazy"></figure><div class="content"><section id="ubicacion" class="section reveal"><div class="section-label">Dónde será</div><h2 data-edit="locationsHeadingSize">Nos vemos aquí.</h2><div class="ornament"></div><div class="locations"><div class="location-card map-mode-toggle"><div class="location-head"><div><small data-edit="ceremonyText">Ceremonia religiosa</small><strong data-edit="ceremonyText">Santuario la Purísima 4:30pm</strong></div><button class="map-toggle" type="button" aria-expanded="false" aria-controls="map-ceremony"><span>Ver mapa</span><span class="map-toggle-icon">＋</span></button><div class="map-disclosure" id="map-ceremony"><div class="map-disclosure-inner"><div class="map-preview"><iframe data-src="https://www.google.com/maps?q=20.2031775%2C-104.0504276&amp;hl=es&amp;t=m&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Mapa de Santuario la Purísima 4:30pm"></iframe></div><a class="map-external" href="https://maps.app.goo.gl/MDc57k1dec1t4pcr5" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></div></div></div></div><div class="location-card map-mode-toggle"><div class="location-head"><div><small data-edit="receptionText">Recepción</small><strong data-edit="receptionText">Salón Lupitas 6:30pm</strong></div><button class="map-toggle" type="button" aria-expanded="false" aria-controls="map-reception"><span>Ver mapa</span><span class="map-toggle-icon">＋</span></button><div class="map-disclosure" id="map-reception"><div class="map-disclosure-inner"><div class="map-preview"><iframe data-src="https://www.google.com/maps?q=20.195812%2C-104.0443109&amp;hl=es&amp;t=m&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="Mapa de Salón Lupitas 6:30pm"></iframe></div><a class="map-external" href="https://maps.app.goo.gl/uV6iWwBjsUohEnpFA" target="_blank" rel="noopener">Abrir en Google Maps ↗</a></div></div></div></div></div></section><section id="confirmar" class="section center rsvp reveal"><div class="section-label">RSVP</div><h2>¿Nos acompañas?</h2><p class="section-copy">Tu confirmación nos ayuda a preparar cada detalle.</p><a class="cta" target="_blank" href="https://wa.me/523757517830?text=Hola%2C%20quiero%20confirmar%20mi%20asistencia%20a%20tus%20XV%20a%C3%B1os.">Confirmar por WhatsApp →</a></section><section class="section center reveal date-section"><div class="section-label">Save the date</div><h2 data-edit="countdownLabel">Falta para mi gran noche</h2><div class="date-card date-auto"><div class="date-weekday">SÁBADO</div><div class="date-main"><span class="date-month">DICIEMBRE</span><strong class="date-day">19</strong><span class="date-year">2026</span></div><div class="date-time">04:30 P.M.</div></div><div class="countdown countdown-super_minimal" data-date="2026-12-19T16:30"><div class="count-item"><b data-d>00</b><span>Días</span></div><div class="count-item"><b data-h>00</b><span>Horas</span></div><div class="count-item"><b data-m>00</b><span>Min</span></div><div class="count-item"><b data-s>00</b><span>Seg</span></div></div></section><section class="section reveal"><div class="section-label center">Con cariño</div><div class="final-message" data-edit="mainMessage" style="font-size:clamp(25px,6vw,36px)">Hay momentos que se sueñan durante años. Gracias por vivir este conmigo.</div><div class="closing-signature" data-edit="closingSignature"><span style="font-family:'Great Vibes',cursive">Sabrina Yamilet</span></div></section><footer class="aura-brand-credit" data-aura-brand-credit="default-v1" aria-label="Créditos de diseño"><a href="https://auradigitaljal.com/" target="_blank" rel="noopener noreferrer" aria-label="Creado por Aura Digital. Conoce nuestras invitaciones"><span class="aura-brand-credit-kicker">Creado por</span><strong>AURA DIGITAL</strong><span class="aura-brand-credit-link">Conoce nuestras invitaciones</span></a></footer></div></main><audio src="assets/musica.mp3?v=mwe94bta" loop preload="auto"></audio><button class="music-toggle" aria-label="Música">♪</button><script>(function invitationRuntime(){
  const ready=()=>{
   const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
