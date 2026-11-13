@@ -1,0 +1,33 @@
+name: Importar apertura de Sabrina
+on:
+  push:
+    paths:
+      - '.github/workflows/import-sabrina-media.yml'
+permissions:
+  contents: write
+jobs:
+  importar:
+    if: github.event.head_commit.message == 'Transferir archivos de apertura Sabrina'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+      - name: Transferir imagen y video aportados
+        env:
+          IMAGE_URL: https://at.adobe.com/fSlUJY03JC25peTs
+          VIDEO_URL: https://at.adobe.com/kmgYlUSR6iUT1eX3
+        run: |
+          set -euo pipefail
+          mkdir -p assets
+          curl -fL --retry 3 --silent --show-error --max-time 120 "$IMAGE_URL" -o assets/apertura-sabrina.png
+          curl -fL --retry 3 --silent --show-error --max-time 120 "$VIDEO_URL" -o assets/apertura-sabrina.mov
+          test "$(wc -c < assets/apertura-sabrina.png)" -gt 100000
+          test "$(wc -c < assets/apertura-sabrina.mov)" -gt 100000
+          file assets/apertura-sabrina.png assets/apertura-sabrina.mov
+      - name: Guardar medios en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/apertura-sabrina.png assets/apertura-sabrina.mov
+          git commit -m "Guardar medios de apertura de Sabrina" || exit 0
+          git push
