@@ -1,4 +1,4 @@
-name: Importar apertura de Sabrina
+name: Preparar animación MP4 de Sabrina
 on:
   push:
     paths:
@@ -6,28 +6,22 @@ on:
 permissions:
   contents: write
 jobs:
-  importar:
-    if: github.event.head_commit.message == 'Transferir archivos de apertura Sabrina'
+  convertir:
+    if: github.event.head_commit.message == 'Preparar formato MP4 de Sabrina'
     runs-on: ubuntu-latest
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
-      - name: Transferir imagen y video aportados
-        env:
-          IMAGE_URL: https://at.adobe.com/fSlUJY03JC25peTs
-          VIDEO_URL: https://at.adobe.com/kmgYlUSR6iUT1eX3
+      - name: Preparar formato HTML5 sin perder calidad
         run: |
           set -euo pipefail
-          mkdir -p assets
-          curl -fL --retry 3 --silent --show-error --max-time 120 "$IMAGE_URL" -o assets/apertura-sabrina.png
-          curl -fL --retry 3 --silent --show-error --max-time 120 "$VIDEO_URL" -o assets/apertura-sabrina.mov
-          test "$(wc -c < assets/apertura-sabrina.png)" -gt 100000
-          test "$(wc -c < assets/apertura-sabrina.mov)" -gt 100000
-          file assets/apertura-sabrina.png assets/apertura-sabrina.mov
-      - name: Guardar medios en el repositorio
+          ffmpeg -hide_banner -loglevel error -y -i assets/apertura-sabrina.mov -c:v copy -an -movflags +faststart assets/apertura-sabrina.mp4
+          test "$(wc -c < assets/apertura-sabrina.mp4)" -gt 100000
+          file assets/apertura-sabrina.mp4
+      - name: Guardar video compatible
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/apertura-sabrina.png assets/apertura-sabrina.mov
-          git commit -m "Guardar medios de apertura de Sabrina" || exit 0
+          git add assets/apertura-sabrina.mp4
+          git commit -m "Agregar animación MP4 compatible con móviles" || exit 0
           git push
