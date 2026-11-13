@@ -7,7 +7,7 @@ permissions:
   contents: write
 jobs:
   convertir:
-    if: github.event.head_commit.message == 'Preparar formato MP4 de Sabrina'
+    if: github.event.head_commit.message == 'Instalar convertidor y preparar MP4 Sabrina'
     runs-on: ubuntu-latest
     steps:
       - name: Descargar repositorio
@@ -15,6 +15,8 @@ jobs:
       - name: Preparar formato HTML5 sin perder calidad
         run: |
           set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
           ffmpeg -hide_banner -loglevel error -y -i assets/apertura-sabrina.mov -c:v copy -an -movflags +faststart assets/apertura-sabrina.mp4
           test "$(wc -c < assets/apertura-sabrina.mp4)" -gt 100000
           file assets/apertura-sabrina.mp4
